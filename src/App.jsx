@@ -19,6 +19,7 @@ const Home = React.lazy(() => import('./views/Home'))
 const Profile = React.lazy(() => import('./views/Profile'))
 const SignUp = React.lazy(() => import('./views/SignUp'))
 
+
 export default function App() {
   return (
     <>
