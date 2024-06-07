@@ -3,6 +3,9 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 
+import ErrorBoundary from "@/comonents/ErrorBoundary";
+import { lazy } from "react";
+
 const routes = [
   {
     path: "/",
@@ -10,10 +13,18 @@ const routes = [
   },
   {
     path: "/home/*",
+    element: <LazyLoad component={lazy(() => import('@/views/Home'))} />,
+    // errorElement: <ErrorBoundary />,
   },
   {
     path: "/login",
-    element: "",
+    lazy: () => import('@/views/Login'),
+    // errorElement: <ErrorBoundary />
+  },
+  {
+    path: "/signup",
+    lazy: () => import('@/views/SingUp'),
+    // errorElement: <ErrorBoundary />
   },
 ];
 

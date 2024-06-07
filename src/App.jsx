@@ -11,27 +11,20 @@
 
 // // export default App
 
-import React, { Suspense } from 'react'
+import React from 'react'
+import { QueryClient, QueryClientProvider  } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import Loading from './comonents/Loading'
 
-const Home = React.lazy(() => import('./views/Home'))
-const Profile = React.lazy(() => import('./views/Profile'))
-const SignUp = React.lazy(() => import('./views/SignUp'))
-
+const queryClient = new QueryClient()
 
 export default function App() {
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <Home />
-      </Suspense>
-      <Suspense fallback={<Loading />}>
-        <Profile />
-      </Suspense>
-    <Suspense fallback={<Loading />}>
-      <SignUp />
-    </Suspense>
+  <QueryClientProvider client={queryClient}>
+    <Home />
+    <ReactQueryDevtools />
+  </QueryClientProvider>
     </>
   )
 }
