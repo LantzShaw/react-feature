@@ -24,7 +24,7 @@ export const fetchNews = async () => {
 
   if (response.ok) {
     const data: BasicResponse<News[]> = await response.json();
-w
+
     return data;
   }
 
